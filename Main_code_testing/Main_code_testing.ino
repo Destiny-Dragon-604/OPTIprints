@@ -33,16 +33,26 @@ void setup() {
  delay(2000);
 }
 
-void stepMotor(int steps, int delayUs) {
-  for (int i = 0; i < steps; i++) {
-    digitalWrite(stepPin, HIGH);
-    delayMicroseconds(delayUs);
+void loop() {
+  
+  digitalWrite(dirPin, HIGH);
+  for (int step = 0; step < rotation; step++ ) {
+    digitalWrite(stepPin, HIGH); 
+    delayMicroseconds(150);
     digitalWrite(stepPin, LOW);
-    delayMicroseconds(delayUs);
+    delayMicroseconds(150);
   }
+
+  delay(1000);
+  
+  digitalWrite(dirPin, LOW);
+  for (int step = 0; step < rotation; step++ ) {
+    digitalWrite(stepPin, HIGH); 
+    delayMicroseconds(200);
+    digitalWrite(stepPin, LOW);
+    delayMicroseconds(200);
+  }
+  delay(1000);
+
 }
-
-digitalWrite(dirPin, HIGH);
-stepMotor(rotation, 150);
-
 
